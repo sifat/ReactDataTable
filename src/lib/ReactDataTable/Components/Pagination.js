@@ -1,0 +1,23 @@
+import { useContext } from "react";
+import { DataContext, OptionContext } from "../Contexts";
+import PaginationLink from "./PaginationLink";
+
+export default function Pagination() {
+    const option = useContext(OptionContext);
+    const data = useContext(DataContext);
+
+    if (!option.pagination.enablePagination) return null;
+
+    console.log(data.totalPage);
+    const paginationLinks = [];
+    for (let i = 1; i <= data.totalPage; i++) {
+        paginationLinks.push(<PaginationLink num={i} key={i} />);
+    }
+    return (
+        <nav>
+            <ul className={option.pagination.className}>
+                {paginationLinks}
+            </ul>
+        </nav>
+    );
+}
