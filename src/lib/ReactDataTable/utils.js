@@ -1,6 +1,12 @@
 export const defaultOptions = {
+    heading: {
+        enableHeading: true,
+        title: '',
+        className: 'row table-header',
+        titleWrapperClassName: 'col-sm-6'
+    },
     table: {
-        className: 'table',
+        className: 'table table-striped table-hover',
         tableHeader: {
             enableTableHeader: true,
             className: ''
@@ -22,11 +28,11 @@ export const defaultOptions = {
     },
     search: {
         enableSearch: true,
-        position: 'top-right',
+        position: 'right',
         className: 'form-control input-sm',
         notFoundText: 'Sorry, no record found with the search criteria',
         casesensitive: false,
-        wrapperClassName: 'row',
+        wrapperClassName: 'col-sm-6',
         name: 'search'
     },
     ajax: {
@@ -69,6 +75,11 @@ export const mergeOptions = (option) => {
             case 'ajax':
                 if (option['ajax'].hasOwnProperty('url') && option['ajax']['url']) {
                     modifiedOption['remote'] = true;
+                }
+                break;
+            case 'heading':    
+                if (typeof (option['heading']) !== 'object') {
+                    modifiedOption['heading'] = { enableHeading: option['heading'] };
                 }
                 break;
 
@@ -149,7 +160,7 @@ export function sortArrayObj(arr, order, key) {
     return sortedArr;
 }
 
-export function getRemoteData(option, contextData) {
+export function getRemoteData(option, contextData, noResultContext) {
     const requestOption = option.ajax.requestOption;
     const url = new URL(option.ajax.url);
     const requestMethod = requestOption.hasOwnProperty('method') ? requestOption.method : 'GET';
@@ -172,6 +183,8 @@ export function getRemoteData(option, contextData) {
     }
 
 
+    contextData.setIsLoading(true);
+    noResultContext.setNoResultFound(false);
     fetch(url, requestOption)
         .then((response) => {
             if (!response.ok) {
@@ -187,6 +200,10 @@ export function getRemoteData(option, contextData) {
             }
             const jsonData = option.ajax.dataKey ? json[option.ajax.dataKey] : json;
             contextData.setData(jsonData);
+            contextData.setIsLoading(false);
+            if (jsonData.length == 0) {
+                noResultContext.setNoResultFound(true);
+            }
         })
         .catch((error) => {
             console.error('There has been a problem with your fetch operation:', error);

@@ -8,7 +8,7 @@ export default function Pagination() {
 
     if (!option.pagination.enablePagination) return null;
 
-    console.log(data.totalPage);
+    // console.log(data.totalPage);
     const paginationLinks = [];
     for (let i = 1; i <= data.totalPage; i++) {
         paginationLinks.push(<PaginationLink num={i} key={i} />);

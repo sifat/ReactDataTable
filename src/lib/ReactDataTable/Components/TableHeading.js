@@ -34,12 +34,14 @@ export default function TableHeading({column}) {
                 return true;
             }
 
+            data.setIsLoading(true);
             let sortedArray = sortArrayObj([...data.filteredData.current], sortingState, column.dataIndex);
             data.filteredData.current = sortedArray;
             if (option.pagination.enablePagination) {
                 sortedArray = pagintateData(sortedArray, option.pagination.perPage, 1);
             }
             data.setData(sortedArray);
+            data.setIsLoading(false);
 
         }}>
             {column.title}

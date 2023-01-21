@@ -1,10 +1,12 @@
 import { useContext } from "react";
-import { DataContext, OptionContext } from "../Contexts";
+import { DataContext, NoResultFoundContext, OptionContext } from "../Contexts";
 import { pagintateData, initalProps } from "../utils";
 
 export default function Search() {
     const option = useContext(OptionContext);
     const data = useContext(DataContext);
+    const noResult = useContext(NoResultFoundContext);
+    
     let props = initalProps(option, 'search');
     return (
         <div className={option.search.wrapperClassName}>
@@ -22,6 +24,12 @@ export default function Search() {
                     return true;
                 }
 
+                
+                if (noResult.noResultFound === true) {
+                    noResult.setNoResultFound(false);
+                } 
+
+                data.setIsLoading(true);
                 let newData = [];
                 if (e.target.value.length == 0) {
                     newData = data.original;
@@ -57,6 +65,10 @@ export default function Search() {
                     newData = pagintateData(newData, option.pagination.perPage, 1);
                 }
                 data.setData(newData);
+                data.setIsLoading(false);
+                if (newData.length == 0) {
+                    noResult.setNoResultFound(true);
+                }
             }} />
         </div>
     );

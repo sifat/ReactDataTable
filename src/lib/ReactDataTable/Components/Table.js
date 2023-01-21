@@ -8,9 +8,21 @@ export default function Table({ children }) {
     const props = initalProps(option, 'table');
     
     const search = option.search.enableSearch ? <Search /> : null;
+    let heading = null;
+    if (option.heading.enableHeading) {
+        const title = <div className={option.heading.titleWrapperClassName}>
+            {option.heading.title}
+        </div>
+        const rightContent = option.search.position == 'right' ? search : title;
+        const leftContent = option.search.position == 'left' ? search : title;
+        heading = <div className={option.heading.className}>
+            {leftContent}
+            {rightContent}
+        </div>
+    }
     return (
         <>
-            {search}
+            {heading}
             <table {...props}>
                 {children}
             </table>

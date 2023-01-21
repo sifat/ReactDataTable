@@ -1,8 +1,28 @@
+import { isValidElement, useContext, useEffect, useState } from 'react';
+import { DataContext } from '../Contexts';
+
 export default function TableCell({ data, column }) {
+    const dContext = useContext(DataContext);
+    const [status, setStatus] = useState(false);
+
+    useEffect(() => {
+        setStatus(dContext.checkboxStatus);
+    }, [dContext.checkboxStatus]);
+
     let cell = data[column.dataIndex];
-    // console.log();
+    
     if (column.hasOwnProperty('render') && typeof (column.render) == 'function') {
         cell = column.render(data);
+    }
+
+    if (isValidElement(column.title) && column.title.type.name == 'ReactTableCheckBox') {
+
+        cell = <input type="checkbox"
+            value={data[column.dataIndex]}
+            name={column.dataIndex}
+            checked={status}
+            onChange={() => setStatus((prevStatus) => !prevStatus)}
+        />
     }
 
     return (

@@ -1,8 +1,9 @@
 import ReactDataTable from './lib/ReactDataTable/ReactDataTable';
+import { ReactTableCheckBox } from './lib/ReactDataTable/Components/Elements';
 function App() {
 
   const columns = [
-    { title: '#', dataIndex: 'userId' },
+    { title: <ReactTableCheckBox name="test" checked={true}/>, dataIndex: 'userId' },
     {
       title: 'Firstname', render: (item) => {
         return (
@@ -82,10 +83,29 @@ function App() {
       "countrycode": "AI"
     }
   ];
+  const option = {
+    pagination: { perPage: 2 }
+  };
+
+  // const option = {
+  //   ajax: {
+  //     url: 'http://localhost:3001/',
+  //     requestOption: {
+  //       method: "POST",
+  //       body: {a: "a", b: "b"},
+  //       mode: 'cors', credentials: 'omit',
+  //       headers: {
+  //         'Content-Type': 'application/json'
+  //       },
+  //       referrerPolicy: 'no-referrer'
+  //     }
+  //   }
+  // }
+  // const data = [];
 
   return (
     <>
-      <ReactDataTable columns={columns} data={data} option={null} />
+      <ReactDataTable columns={columns} data={data} option={option} />
     </>
   );
 }

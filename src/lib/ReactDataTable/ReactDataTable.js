@@ -1,26 +1,29 @@
 import * as React from 'react';
-import { OptionContext, DataContext, ColumnContext } from './Contexts';
+import { OptionContext, DataContext, ColumnContext, NoResultFoundContext } from './Contexts';
 import Table from './Components/Table';
 import { defaultOptions, getDefaultAppState, getRemoteData, mergeOptions, pagintateData, sortArrayObj } from './utils';
 import TableHeader from './Components/TableHeader';
 import TableBody from './Components/TableBody';
-import useFetch from './useFetch';
 import Pagination from './Components/Pagination';
+import { Loading } from './Components/Elements';
 
-function ReactDataTable({ columns, data, option }) {
+function ReactDataTable({ columns, data, option, loader }) {
     const tableOptions = option ? mergeOptions(option) : defaultOptions;
     const defaultAppState = getDefaultAppState(tableOptions, columns);
     let iniTotalPages = 1;
-    
+
     if (!tableOptions.remote && tableOptions.pagination.enablePagination) {
         iniTotalPages = Math.ceil(data.length / tableOptions.pagination.perPage);
     }
-    console.log(tableOptions);
-    
+    // console.log(tableOptions);
+
     const [appState, setAppState] = React.useState(defaultAppState);
     const filteredData = React.useRef([]);
     const [tableData, setData] = React.useState(data ? data : []);
     const [totalPage, setTotalPage] = React.useState(iniTotalPages);
+    const [checkboxStatus, setCheckbocStatus] = React.useState(false);
+    const [isLoading, setIsLoading] = React.useState(true);
+    const [noResultFound, setNoResultFound] = React.useState(false);
 
     const dataContextValue = {
         current: tableData,
@@ -30,12 +33,21 @@ function ReactDataTable({ columns, data, option }) {
         appState: appState,
         setAppState: setAppState,
         totalPage: totalPage,
-        setTotalPage: setTotalPage
+        setTotalPage: setTotalPage,
+        checkboxStatus: checkboxStatus,
+        setCheckbocStatus: setCheckbocStatus,
+        isLoading: isLoading,
+        setIsLoading: setIsLoading
     }
+
+    const noResultContextValue = {
+        noResultFound: noResultFound,
+        setNoResultFound: setNoResultFound
+    };
 
     React.useEffect(() => {
         if (tableOptions.remote) {
-            getRemoteData(tableOptions, dataContextValue);
+            getRemoteData(tableOptions, dataContextValue, noResultContextValue);
         }
 
     }, [appState]);
@@ -48,19 +60,24 @@ function ReactDataTable({ columns, data, option }) {
             } else {
                 setData([...filteredData.current]);
             }
+            setIsLoading(false);
         }
     }, []);
+
+    if (!loader) loader = <Loading numColumn={columns.length} />;
 
 
     return (
         <OptionContext.Provider value={tableOptions}>
             <DataContext.Provider value={dataContextValue} >
-                <Table>
-                    <ColumnContext.Provider value={columns} >
-                        <TableHeader />
-                        <TableBody />
-                    </ColumnContext.Provider>
-                </Table>
+                <NoResultFoundContext.Provider value={noResultContextValue} >
+                    <Table>
+                        <ColumnContext.Provider value={columns} >
+                            <TableHeader />
+                            <TableBody loader={loader} />
+                        </ColumnContext.Provider>
+                    </Table>
+                </NoResultFoundContext.Provider>
                 <Pagination />
             </DataContext.Provider>
         </OptionContext.Provider>

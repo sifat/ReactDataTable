@@ -23,7 +23,9 @@ export default function PaginationLink({num}) {
             if (option.remote) {
                 return true;
             }
+            data.setIsLoading(true);
             data.setData(pagintateData([...data.filteredData.current], option.pagination.perPage, num));
+            data.setIsLoading(false);
         }}>
             <a className={option.pagination.anchorClassName} >{num}</a>
         </li>

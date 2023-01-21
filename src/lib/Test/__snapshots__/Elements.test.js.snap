@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BootStrapSpinnerBorder test 1`] = `
+<div
+  className="spinner-border text-primary  m-5 "
+  role="status"
+>
+  <span
+    className="visually-hidden"
+  >
+    Loading...
+  </span>
+</div>
+`;
+
+exports[`BootStrapSpinners test 1`] = `
+<div
+  className="spinner-border spinner-border-sm  text-primary "
+  role="status"
+>
+  <span
+    className="visually-hidden"
+  >
+    Loading...
+  </span>
+</div>
+`;
