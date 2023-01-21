@@ -10,7 +10,7 @@ export default function Pagination() {
 
     // console.log(data.totalPage);
     const paginationLinks = [];
-    for (let i = 1; i <= data.totalPage; i++) {
+    for (let i = 0; i <= data.totalPage + 1; i++) {
         paginationLinks.push(<PaginationLink num={i} key={i} />);
     }
     return (
