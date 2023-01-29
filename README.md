@@ -12,22 +12,22 @@ A customizable react component with additional function.
 ```js
 import { ReactTableCheckBox } from './lib/ReactDataTable/Components/Elements';
 const columns = [
-    { title: <ReactTableCheckBox name="test" checked={true}/>, dataIndex: 'userId' },
+    { title: <ReactTableCheckBox name="test" checked={true}/>, key: 'userId' },
     {
       title: 'Firstname', render: (item) => {
         return (
           <b>{item.firstname}</b>
         )
-      }, sort: true, dataIndex: 'firstname'
+      }, sort: true, key: 'firstname'
     },
     {
       title: 'Lastname', render: (item) => {
         return (
           <b>{item.lastname}</b>
         )
-      }, sort: true, dataIndex: 'lastname'
+      }, sort: true, key: 'lastname'
     },
-    { title: 'Country code', dataIndex: 'countrycode', sort: true }
+    { title: 'Country code', key: 'countrycode', sort: true }
   ];
 
   const data = [
@@ -59,11 +59,11 @@ const columns = [
 use with remote source
 ```js
 const columns = [
-    { title: 'ID', dataIndex: 'userId' },
-    { title: 'firstname', dataIndex: 'firstname', sort: true },
-    { title: 'lastname', dataIndex: 'lastname', sort: true },
+    { title: 'ID', key: 'userId' },
+    { title: 'firstname', key: 'firstname', sort: true },
+    { title: 'lastname', key: 'lastname', sort: true },
     {
-      title: 'friends', dataIndex: 'friends', render: (item) => {
+      title: 'friends', key: 'friends', render: (item) => {
         const li = item.friends.map((friend) => <li key={friend.id}>{friend.id}</li>);
         return (
           <ul>

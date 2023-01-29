@@ -124,11 +124,11 @@ test('sorting test', () => {
 
 test('default app state', () => {
     const columns = [
-        { title: 'ID', dataIndex: 'userId' },
-        { title: 'firstname', dataIndex: 'firstname', sort: true },
-        { title: 'lastname', dataIndex: 'lastname', sort: true },
+        { title: 'ID', key: 'userId' },
+        { title: 'firstname', key: 'firstname', sort: true },
+        { title: 'lastname', key: 'lastname', sort: true },
         {
-          title: 'friends', dataIndex: 'friends', render: (item) => {
+          title: 'friends', key: 'friends', render: (item) => {
             const li = item.friends.map((friend) => <li key={friend.id}>{friend.id}</li>);
             return (
               <ul>

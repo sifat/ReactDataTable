@@ -25,3 +25,32 @@ exports[`BootStrapSpinners test 1`] = `
   </span>
 </div>
 `;
+
+exports[`Default LoaderTest 1`] = `
+<tr
+  className="tr-loading"
+>
+  <td
+    colSpan={2}
+  >
+    <div
+      style={
+        {
+          "textAlign": "center",
+        }
+      }
+    >
+      <img
+        alt="Loading..."
+        src=""
+        style={
+          {
+            "height": "70px",
+            "width": "100px",
+          }
+        }
+      />
+    </div>
+  </td>
+</tr>
+`;

@@ -13,7 +13,7 @@ export default function TableHeader() {
 
     const th = columns.map((column) => {
         return (
-            <TableHeading column={column} key={column.dataIndex} />
+            <TableHeading column={column} key={column.key} />
         )
     });
 

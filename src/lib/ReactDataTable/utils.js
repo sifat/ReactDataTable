@@ -269,7 +269,7 @@ export function getDefaultAppState(option, columns) {
         }
 
         if (column.hasOwnProperty('sort') && column.sort && !sortingColumn) {
-            sortingColumn = column.dataIndex;
+            sortingColumn = column.key;
 
         }
     }

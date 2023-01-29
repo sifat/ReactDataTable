@@ -3,22 +3,22 @@ import { ReactTableCheckBox } from './lib/ReactDataTable/Components/Elements';
 function App() {
 
   const columns = [
-    { title: <ReactTableCheckBox name="test" checked={true}/>, dataIndex: 'userId' },
+    { title: <ReactTableCheckBox name="test" checked={true}/>, key: 'userId' },
     {
       title: 'Firstname', render: (item) => {
         return (
           <b>{item.firstname}</b>
         )
-      }, sort: true, dataIndex: 'firstname'
+      }, sort: true, key: 'firstname'
     },
     {
       title: 'Lastname', render: (item) => {
         return (
           <b>{item.lastname}</b>
         )
-      }, sort: true, dataIndex: 'lastname'
+      }, sort: true, key: 'lastname'
     },
-    { title: 'Country code', dataIndex: 'countrycode', sort: true }
+    { title: 'Country code', key: 'countrycode', sort: true }
   ];
 
   const data = [

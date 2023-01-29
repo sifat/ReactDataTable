@@ -33,9 +33,9 @@ export default function TableBody({loader}) {
     const tr = data.current.map((row, index) => {
         let contents = '';
         const td = columns.map((column) => {
-            contents += row[column.dataIndex];
+            contents += row[column.key];
             return (
-                <TableCell data={row} column={column} key={column.dataIndex} />
+                <TableCell data={row} column={column} key={column.key} />
             )
         });
         return (
