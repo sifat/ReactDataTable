@@ -6,10 +6,14 @@ export default function Search() {
     const option = useContext(OptionContext);
     const data = useContext(DataContext);
     const noResult = useContext(NoResultFoundContext);
+    const style = JSON.parse(option.search.style);
+    style['float'] = option.search.position == 'right' ? 'right' : 'left';
+    
     
     let props = initalProps(option, 'search');
     return (
-        <div className={option.search.wrapperClassName}>
+        <div className={option.search.wrapperClassName} style={style}>
+            <label className={option.search.searchLabelClassName}>{option.search.searchLabel}</label>
             <input type={"text"} {...props} name={option.search.name} onKeyUp={(e) => {
                 
                 if (option.remote) {
@@ -52,7 +56,7 @@ export default function Search() {
 
 
                 data.filteredData.current = newData;
-                const totalPage = Math.ceil(newData.length / option.pagination.perPage);
+                const totalPage = Math.ceil(newData.length / data.appState.perPage);
                 data.setAppState((prev) => {
                     return {
                         ...prev,
@@ -62,7 +66,7 @@ export default function Search() {
                 });
                 data.setTotalPage(totalPage);
                 if (option.pagination.enablePagination) {
-                    newData = pagintateData(newData, option.pagination.perPage, 1);
+                    newData = pagintateData(newData, data.appState.perPage, 1);
                 }
                 data.setData(newData);
                 data.setIsLoading(false);

@@ -37,7 +37,7 @@ export default function PaginationLink({num}) {
                 return true;
             }
             data.setIsLoading(true);
-            data.setData(pagintateData([...data.filteredData.current], option.pagination.perPage, num));
+            data.setData(pagintateData([...data.filteredData.current], data.appState.perPage, num));
             data.setIsLoading(false);
         }}>
             <a className={option.pagination.anchorClassName} >

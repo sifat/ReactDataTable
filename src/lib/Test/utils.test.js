@@ -9,7 +9,7 @@ test('option test', () => {
 
     const anotherOption = mergeOptions({pagination: false});
     expect(anotherOption['pagination']['enablePagination']).toBeFalsy();
-    expect(anotherOption['table']['className']).toBe('table table-striped table-hover');
+    expect(anotherOption['table']['className']).toBe('react-datatable');
 
     const searchOption = mergeOptions({table: {className: 'other'}, search: false});
     expect(searchOption['search']['enablePagination']).toBeFalsy();
@@ -17,7 +17,7 @@ test('option test', () => {
 
     const tableHeader = mergeOptions({table: {tableHeader: false, tableFooter: true}});
     expect(tableHeader['table']['tableHeader']['enableTableHeader']).toBeFalsy();
-    expect(tableHeader['table']['className']).toBe('table table-striped table-hover');
+    expect(tableHeader['table']['className']).toBe('react-datatable');
 });
 
 test('deep merge test', () => {
@@ -53,7 +53,7 @@ test('deep merge test', () => {
 
 test('initial prop test', () => {
     const option = mergeOptions({table: {attr: {a: 'b'}}}); 
-    expect(initalProps(option, 'table')).toEqual({className: 'table table-striped table-hover', a: 'b'});
+    expect(initalProps(option, 'table')).toEqual({className: 'react-datatable', a: 'b'});
 });
 
 test('sorting test', () => {

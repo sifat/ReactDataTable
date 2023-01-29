@@ -1,0 +1,57 @@
+.react-datatable {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+.react-datatable caption {
+    text-align: left;
+    font-size: 1.3rem;
+    padding: 1rem 0;
+}
+.react-datatable .table-header {
+    clear: both;
+    padding: 0.5rem 0;
+}
+.react-datatable tbody, 
+.react-datatable td, 
+.react-datatable tfoot, 
+.react-datatable th, 
+.react-datatable thead,
+.react-datatable tr {
+    padding: 0.5rem 0.5rem;
+    text-align: left;
+    border: 1px solid;
+    
+}
+.react-table-pagination {
+    list-style: none;
+    float: right;
+}
+.react-table-pagination .react-table-page-item {
+    display: inline-block;
+    padding: 0.5rem;
+    border: 1px solid;
+    cursor: pointer;
+}
+
+.sort-col {
+    position: relative;
+}
+.sorticon {
+    position: absolute;
+    font-size: 0.8rem;
+    opacity: 0.5;
+
+}
+.sorticon.asc {
+    right: 10px;
+} 
+.sorticon.desc {
+    right: 1px;
+} 
+.sort-col.sort-desc .sorticon.desc {
+    opacity: 1;
+}
+.sort-col.sort-asc .sorticon.asc {
+    opacity: 1;
+}

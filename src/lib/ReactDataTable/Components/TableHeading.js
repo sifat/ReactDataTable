@@ -11,7 +11,9 @@ export default function TableHeading({column}) {
     const [sortingState, setSortingState] = useState('asc');
     const sortEnable = column.hasOwnProperty('sort') ? column.sort : false;
     const orderby = data.appState.hasOwnProperty('orderby') && data.appState.orderby ? data.appState.orderby : null;
-    const className = sortEnable && orderby == column.dataIndex ? `sort-${sortingState}` : null;
+    const className = sortEnable && orderby == column.dataIndex ? `sort-col sort-${sortingState}` : null;
+    const sortAsc = sortEnable && orderby == column.dataIndex ? <span className="sorticon asc">{option.table.tableHeader.sortingIcon.asc}</span> : null;
+    const sortDesc = sortEnable && orderby == column.dataIndex ? <span className="sorticon desc">{option.table.tableHeader.sortingIcon.desc}</span> : null;
     
 
     return (
@@ -38,13 +40,15 @@ export default function TableHeading({column}) {
             let sortedArray = sortArrayObj([...data.filteredData.current], sortingState, column.dataIndex);
             data.filteredData.current = sortedArray;
             if (option.pagination.enablePagination) {
-                sortedArray = pagintateData(sortedArray, option.pagination.perPage, 1);
+                sortedArray = pagintateData(sortedArray, data.appState.perPage, 1);
             }
             data.setData(sortedArray);
             data.setIsLoading(false);
 
         }}>
             {column.title}
+            {sortAsc}
+            {sortDesc}
         </th>
     );
 }

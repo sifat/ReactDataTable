@@ -14,7 +14,7 @@ export default function Pagination() {
         paginationLinks.push(<PaginationLink num={i} key={i} />);
     }
     return (
-        <nav>
+        <nav className={option.pagination.wrapperClassName}>
             <ul className={option.pagination.className}>
                 {paginationLinks}
             </ul>

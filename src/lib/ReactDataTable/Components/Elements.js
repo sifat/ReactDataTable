@@ -1,13 +1,13 @@
-import { React, useContext, useEffect } from 'react';
-import { DataContext } from '../Contexts';
+import { React, useContext, useEffect, useState } from 'react';
+import { DataContext, OptionContext } from '../Contexts';
 import loading_icon from '../Loading_icon.gif';
 
 export function Loading({ numColumn }) {
     return (
         <tr className="tr-loading">
             <td colSpan={numColumn}>
-                <div style={{'textAlign': 'center'}} >
-                    <img src={loading_icon} alt="Loading..." style={{'width': '100px', 'height': '70px'}} />
+                <div style={{ 'textAlign': 'center' }} >
+                    <img src={loading_icon} alt="Loading..." style={{ 'width': '100px', 'height': '70px' }} />
                 </div>
             </td>
         </tr>
@@ -23,8 +23,8 @@ export function Loading({ numColumn }) {
  * @param margin margin utilities 
  */
 export function BootStrapSpinners({ className, color, margin, size }) {
-    
-    if (size && size == 'small' && (className.indexOf('spinner-border') >= 0  || className.indexOf('ms-auto') >= 0 )) {
+
+    if (size && size == 'small' && (className.indexOf('spinner-border') >= 0 || className.indexOf('ms-auto') >= 0)) {
         className += ' spinner-border-sm ';
     }
     if (size && size == 'small' && className.indexOf('spinner-grow') >= 0) {
@@ -36,7 +36,7 @@ export function BootStrapSpinners({ className, color, margin, size }) {
     if (margin) {
         className += ` ${margin} `;
     }
-    
+
     return (
         <div className={className} role="status">
             <span className="visually-hidden">Loading...</span>
@@ -109,24 +109,20 @@ export function BootStrapSpinnerFlex(props) {
     );
 }
 
-
-
-
-
 export function ReactTableCheckBox({ name, value, checked, className }) {
     const data = useContext(DataContext);
     useEffect(() => {
-        if (checked) data.setCheckbocStatus(checked)    
+        if (checked) data.setCheckbocStatus(checked)
     }, []);
     return (
-        <input type="checkbox" 
-        name={name} 
-        className={className} 
-        value={value} 
-        checked={data.checkboxStatus}
-        onChange={() => {
-            data.setCheckbocStatus((status) => !status)    
-        }} 
+        <input type="checkbox"
+            name={name}
+            className={className}
+            value={value}
+            checked={data.checkboxStatus}
+            onChange={() => {
+                data.setCheckbocStatus((status) => !status)
+            }}
         />
     );
 }

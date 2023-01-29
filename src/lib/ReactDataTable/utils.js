@@ -2,14 +2,18 @@ export const defaultOptions = {
     heading: {
         enableHeading: true,
         title: '',
-        className: 'row table-header',
-        titleWrapperClassName: 'col-sm-6'
+        className: 'table-header',
+        titleWrapperClassName: ''
     },
     table: {
-        className: 'table table-striped table-hover',
+        className: 'react-datatable',
         tableHeader: {
             enableTableHeader: true,
-            className: ''
+            className: '',
+            sortingIcon: {
+                asc: '\u2191',
+                desc: '\u2193'
+            }
         },
         tableFooter: {
             enableTableFooter: false,
@@ -22,18 +26,30 @@ export const defaultOptions = {
         enablePagination: true,
         position: 'bottom',
         perPage: 20,
-        className: 'pagination',
-        pageItemClassName: 'page-item',
-        anchorClassName: 'page-link'
+        className: 'react-table-pagination',
+        pageItemClassName: 'react-table-page-item',
+        anchorClassName: 'react-table-page-link',
+        wrapperClassName: '',
+        lengthMenu: {
+            className: '',
+            position: 'left',
+            menu: [5, 10, 15, 20],
+            wrapperClassName: '',
+            labelClassName: '',
+            style: '{}'
+        }
     },
     search: {
         enableSearch: true,
         position: 'right',
-        className: 'form-control input-sm',
+        className: '',
         notFoundText: 'Sorry, no record found with the search criteria',
         casesensitive: false,
-        wrapperClassName: 'col-sm-6',
-        name: 'search'
+        wrapperClassName: '',
+        name: 'search',
+        searchLabel: 'Search',
+        searchLabelClassName: '',
+        style: '{}'
     },
     ajax: {
         url: '',
@@ -45,6 +61,31 @@ export const defaultOptions = {
 
     },
     remote: false
+
+};
+
+export const bootStrapOptions = {
+    table: {
+        className: 'table table-striped table-hover'
+    },
+    pagination: {
+        className: 'pagination',
+        pageItemClassName: 'page-item',
+        anchorClassName: 'page-link',
+        wrapperClassName: 'd-flex flex-row-reverse',
+        lengthMenu: {
+            className: 'form-select',
+            wrapperClassName: 'input-group',
+            labelClassName: 'input-group-text',
+            style: '{"width": "300px"}'
+        }
+    },
+    search: {
+        className: 'form-control form-control-sm',
+        wrapperClassName: 'input-group',
+        searchLabelClassName: 'input-group-text',
+        style: '{"width": "300px"}'
+    }   
 
 };
 

@@ -84,7 +84,7 @@ function App() {
     }
   ];
   const option = {
-    pagination: { perPage: 2 }
+    pagination: { perPage: 5 }
   };
 
   // const option = {
@@ -104,9 +104,7 @@ function App() {
   // const data = [];
 
   return (
-    <>
-      <ReactDataTable columns={columns} data={data} option={option} />
-    </>
+      <ReactDataTable columns={columns} data={data} option={option} title="Hello World" theme="bootstrap" />
   );
 }
 
