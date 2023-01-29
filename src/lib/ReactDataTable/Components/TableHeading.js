@@ -20,12 +20,13 @@ export default function TableHeading({column}) {
         <th className={className} onClick={() => {
             if (!sortEnable) return false;
 
-            setSortingState((prev) => prev == 'asc' ? 'desc' : 'asc');
+            const newSorting = sortingState == 'asc' ? 'desc' : 'asc';
+            setSortingState(newSorting);
             data.setAppState((prev) => {
                 return {
                     ...prev,
                     orderby: column.key,
-                    sort: sortingState,
+                    sort: newSorting,
                     currentPage: 1
                 }
 
@@ -37,7 +38,7 @@ export default function TableHeading({column}) {
             }
 
             data.setIsLoading(true);
-            let sortedArray = sortArrayObj([...data.filteredData.current], sortingState, column.key);
+            let sortedArray = sortArrayObj([...data.filteredData.current], newSorting, column.key);
             data.filteredData.current = sortedArray;
             if (option.pagination.enablePagination) {
                 sortedArray = pagintateData(sortedArray, data.appState.perPage, 1);
