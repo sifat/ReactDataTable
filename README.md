@@ -11,7 +11,7 @@ A customizable react component with additional function.
 
 ```js
 const columns = [
-    { title: '#', dataIndex: 'userId' },
+    { title: <ReactTableCheckBox name="test" checked={true}/>, dataIndex: 'userId' },
     {
       title: 'Firstname', render: (item) => {
         return (
@@ -45,10 +45,12 @@ const columns = [
     
   ];
 
+  const option = {
+    pagination: { perPage: 5 }
+  };
+
   return (
-    <>
-      <ReactDataTable columns={columns} data={data} option={null} />
-    </>
+      <ReactDataTable columns={columns} data={data} option={option} title="Hello World" theme="bootstrap" />
   );
 
 ```
