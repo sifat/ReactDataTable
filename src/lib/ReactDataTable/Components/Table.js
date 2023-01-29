@@ -15,33 +15,9 @@ export default function Table({ title, children }) {
         caption = <caption>{title ? title : option.heading.title}</caption>;
     }
     if (option.heading.enableHeading) {
-        // const rightContent = option.search.position == 'right' ? search : title;
-        // const leftContent = option.search.position == 'left' ? search : title;
-        // heading = <div className={option.heading.className}>
-        //     <div className="col-sm-6 text-left">
-        //         {leftContent}
-        //     </div>
-        //     <div className="col-sm-6 text-right">
-        //         {rightContent}
-        //     </div>
-        // </div>;
-        // const rightContents = [];
-        // const leftContents = [];
-
-        // if (option.search.position == 'right') {
-        //     rightContents.push(<Search key={1}/>);
-        // }
-        // if (option.search.position == 'left') {
-        //     leftContents.push(<Search key={1} />);
-        // }
-        // leftContents.push(<PaginationPerPageMenu key={1} />);
-        // console.log(leftContents);
-
         heading = <div className={option.heading.className}>
-                <Search />
+                {search}
                 <PaginationPerPageMenu />
-            
-            
         </div>;
 
     }
