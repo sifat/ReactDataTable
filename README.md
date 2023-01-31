@@ -51,7 +51,7 @@ const columns = [
   };
 
   return (
-      <ReactDataTable columns={columns} data={data} option={option} title="Hello World" theme="bootstrap" />
+      <ReactDataTable columns={columns} data={data} option={option} title="Users" theme="bootstrap" />
   );
 
 ```
@@ -93,3 +93,20 @@ const option = {
     </>
   );
   ```
+## Props
+| Name | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| columns | array | yes | | Please view columns section |
+| data | array | no | [] | array of objects | 
+| option | object| no | default option object | Please view option section | 
+| title | string \| component | no | | Displayed on table caption |
+| theme | string | no | default | Values: default \| bootstap. When use with bootstrap please set theme to bootstrap  |
+| loader | component | no | <Loading /> component | Shows while table loads data.  |
+
+## columns Props
+| Name | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| title | string \| component | yes | | The name of the column. e.g. `Firstname`. You can also a valid react component. |
+| key | string | no | |  `key` is required if you want to display data. This will map to data object key. e.g. if you have data like this [{"userId": "56615","firstname": "Kaelyn"}] and you want to display firstname then set `key` to `firstname`. |
+| sort | boolean | no | false | Set to true if you want this column to be sortable | 
+| render | function(item) | no | | Custom function to display cell data. The record of the row passed as parameter. Returned value displayed on table cell  |

@@ -105,7 +105,7 @@ function App() {
   // const data = [];
 
   return (
-      <ReactDataTable columns={columns} data={data} option={option} title="Hello World" theme="" />
+      <ReactDataTable columns={columns} data={data} option={option} title={<b>Users</b>} theme="" />
   );
 }
 

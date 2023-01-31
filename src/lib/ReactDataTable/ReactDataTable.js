@@ -8,7 +8,7 @@ import Pagination from './Components/Pagination';
 import { Loading } from './Components/Elements';
 import './style.css';
 
-function ReactDataTable({ columns, data, option, loader, title, theme }) {
+function ReactDataTable({ columns, data = [], option, loader, title, theme }) {
 
     if (theme == 'bootstrap') {
         option = option ? deepMerge(bootStrapOptions, option) : bootStrapOptions;
