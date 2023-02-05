@@ -1,5 +1,5 @@
-import ReactDataTable from './lib/ReactDataTable/ReactDataTable';
-import { ReactTableCheckBox } from './lib/ReactDataTable/Components/Elements';
+import ReactDataTable, {ReactTableCheckBox} from './lib/ReactDataTable';
+// import { ReactTableCheckBox } from './lib/ReactDataTable/Components/Elements';
 function App() {
 
   const columns = [
