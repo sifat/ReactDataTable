@@ -11,8 +11,8 @@ export default function Table({ title, children }) {
     const search = option.search.enableSearch ? <Search /> : null;
     let heading = null;
     let caption = null;
-    if (title || option.heading.title) {
-        caption = <caption>{title ? title : option.heading.title}</caption>;
+    if (title || option.table.title) {
+        caption = <caption>{title ? title : option.table.title}</caption>;
     }
     if (option.heading.enableHeading) {
         heading = <div className={option.heading.className}>

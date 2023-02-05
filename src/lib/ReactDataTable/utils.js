@@ -1,10 +1,10 @@
 export const defaultOptions = {
     heading: {
         enableHeading: true,
-        title: '',
         className: 'table-header'
     },
     table: {
+        title: '',
         className: 'react-datatable',
         tableHeader: {
             enableTableHeader: true,
