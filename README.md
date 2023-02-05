@@ -12,7 +12,7 @@ A customizable react component with additional function.
 ## Usage
 
 ```js
-import { ReactTableCheckBox } from './lib/ReactDataTable/Components/Elements';
+import ReactDataTable, {ReactTableCheckBox} from './lib/ReactDataTable';
 const columns = [
     { title: <ReactTableCheckBox name="test" checked={true}/>, key: 'userId' },
     {
