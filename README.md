@@ -1,6 +1,6 @@
 # React Data Table Component
 
-A customizable react component with additional function.
+A customizable react table component with additional functions.
 
 ## Key Features
 
@@ -12,7 +12,7 @@ A customizable react component with additional function.
 ## Usage
 
 ```js
-import ReactDataTable, {ReactTableCheckBox} from './lib/ReactDataTable';
+import ReactDataTable, {ReactTableCheckBox} from '@sifatkabir/reactdatatable';
 const columns = [
     { title: <ReactTableCheckBox name="test" checked={true}/>, key: 'userId' },
     {
@@ -53,7 +53,7 @@ const columns = [
   };
 
   return (
-      <ReactDataTable columns={columns} data={data} option={option} title="Users" theme="bootstrap" />
+      <ReactDataTable columns={columns} data={data} option={option} title="Users" />
   );
 
 ```

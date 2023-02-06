@@ -22,5 +22,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-/src/lib/ReactDataTable/package.json
-/src/lib/ReactDataTable/README.md
+/src/lib/README.md
+/src/lib/node_modules
+/src/lib/dist
+src/lib/babel.config.js
+src/lib/package-lock.json
+

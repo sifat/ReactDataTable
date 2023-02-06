@@ -1,0 +1,79 @@
+{
+  "name": "@sifatkabir/reactdatatable",
+  "version": "1.0.10",
+  "private": false,
+  "description": "A customizable react component with additional function.",
+  "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sifat/ReactDataTable.git"
+  },
+  "keywords": [
+    "data-table",
+    "datatable",
+    "react-data-table",
+    "react datatable component",
+    "react",
+    "data",
+    "table",
+    "table-component"
+  ],
+  "author": "sifat",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sifat/ReactDataTable/issues"
+  },
+  "homepage": "https://github.com/sifat/ReactDataTable#readme",
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.20.7",
+    "@babel/core": "^7.20.12",
+    "@babel/preset-flow": "^7.18.6",
+    "@babel/preset-react": "^7.18.6",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "dependencies": {
+    "@babel/preset-env": "^7.20.2"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      [
+        "@babel/preset-react",
+        {
+          "runtime": "automatic"
+        }
+      ]
+    ]
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "prepublish": "rm -rf dist && mkdir dist &&  babel ./ReactDataTable -d dist --copy-files && cp ../../README.md README.md"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "files": [
+    "dist",
+    "README.md"
+ ]
+}
