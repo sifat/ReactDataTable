@@ -2,6 +2,10 @@
 
 A customizable react table component with additional functions.
 
+## Install
+
+npm i @sifatkabir/reactdatatable
+
 ## Key Features
 
 - Searching
