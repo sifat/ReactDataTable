@@ -91,9 +91,7 @@ const option = {
   }
   const data = [];
   return (
-    <>
-      <ReactDataTable columns={columns} data={data} option={option} />
-    </>
+    <ReactDataTable columns={columns} data={data} option={option} />
   );
   ```
 
@@ -154,7 +152,7 @@ const option = {
 | ajax.url | string | no | | url for your remote request. |
 | ajax.requestOption | object | no | `{}` | `fetch` API options. For details please visit [MDN](https://developer.mozilla.org/en-US/docs/Web/API/fetch) |
 | ajax.dataKey | string | no | data | Key of response json which contains the data. Data should be an array of objects. |
-| ajax.totalRecordKey | string | no | total | Key of the response json whcih contains total number of pages for pagination. | 
+| ajax.totalRecordKey | string | no | total | Key of the response json whcih contains total number of pages for pagination. |
 
 ## option example
 
